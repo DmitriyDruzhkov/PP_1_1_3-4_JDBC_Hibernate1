@@ -1,5 +1,6 @@
 package jm.task.core.jdbc.dao;
 
+import jm.task.core.jdbc.entity.UserEntity;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
@@ -67,24 +68,25 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT name, lastName, age FROM user";
-        try (Connection connection = Util.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-
-            while (resultSet.next()) {
-                String name = resultSet.getString("name");
-                String lastName = resultSet.getString("lastName");
-                byte age = resultSet.getByte("age");
-                User user = new User(name, lastName, age);
-                users.add(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
+    public List<UserEntity> getAllUsers() {
+//        List<User> users = new ArrayList<>();
+//        String sql = "SELECT name, lastName, age FROM user";
+//        try (Connection connection = Util.getConnection();
+//             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//             ResultSet resultSet = preparedStatement.executeQuery()) {
+//
+//            while (resultSet.next()) {
+//                String name = resultSet.getString("name");
+//                String lastName = resultSet.getString("lastName");
+//                byte age = resultSet.getByte("age");
+//                User user = new User(name, lastName, age);
+//                users.add(user);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return users;
+        return null;
     }
 
     public void cleanUsersTable() {
