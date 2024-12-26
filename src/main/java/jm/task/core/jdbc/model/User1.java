@@ -1,15 +1,13 @@
-package jm.task.core.jdbc.entity;
+package jm.task.core.jdbc.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
-@Table(name="user")
-public class UserEntity {
-
+@Table
+public class User1 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column()
-    private int id;
+    private Long id;
 
     @Column
     private String name;
@@ -18,22 +16,23 @@ public class UserEntity {
     private String lastName;
 
     @Column
-    private byte age;
+    private Byte age;
 
-    public UserEntity() {
+    public User1() {
+
     }
 
-    public UserEntity(String name, String lastName, byte age) {
+    public User1(String name, String lastName, Byte age) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -45,14 +44,6 @@ public class UserEntity {
         this.name = name;
     }
 
-    public byte getAge() {
-        return age;
-    }
-
-    public void setAge(byte age) {
-        this.age = age;
-    }
-
     public String getLastName() {
         return lastName;
     }
@@ -61,10 +52,17 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
+    public Byte getAge() {
+        return age;
+    }
+
+    public void setAge(Byte age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
+        return "User{" +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +

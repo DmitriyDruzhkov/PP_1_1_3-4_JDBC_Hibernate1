@@ -1,13 +1,9 @@
 package jm.task.core.jdbc.dao;
 
-import jm.task.core.jdbc.entity.UserEntity;
 import jm.task.core.jdbc.model.User;
-import jm.task.core.jdbc.service.UserService;
-import jm.task.core.jdbc.service.UserServiceImpl;
 import jm.task.core.jdbc.util.Util;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
@@ -68,7 +64,7 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
-    public List<UserEntity> getAllUsers() {
+    public List<User> getAllUsers() {
 //        List<User> users = new ArrayList<>();
 //        String sql = "SELECT name, lastName, age FROM user";
 //        try (Connection connection = Util.getConnection();

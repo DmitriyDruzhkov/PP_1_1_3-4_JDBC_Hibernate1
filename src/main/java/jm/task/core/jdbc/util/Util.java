@@ -1,6 +1,6 @@
 package jm.task.core.jdbc.util;
 
-import jm.task.core.jdbc.entity.UserEntity;
+import jm.task.core.jdbc.model.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -11,12 +11,8 @@ import java.sql.*;
 import java.util.Properties;
 
 public class Util {
-    Connection connection;
-    private static SessionFactory sessionFactory;
-
-    public Util(Connection connection) {
-        this.connection = connection;
-    }
+    private Connection connection;
+    private SessionFactory sessionFactory;
 
     public static Connection getConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/mydbtest";
@@ -28,7 +24,7 @@ public class Util {
         return connection;
     }
 
-    public static SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -41,7 +37,7 @@ public class Util {
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 configuration.setProperties(settings);
-                configuration.addAnnotatedClass(UserEntity.class);
+                configuration.addAnnotatedClass(User.class);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);

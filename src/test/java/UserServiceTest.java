@@ -1,4 +1,3 @@
-import jm.task.core.jdbc.entity.UserEntity;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
@@ -42,7 +41,7 @@ public class UserServiceTest {
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
 
-            UserEntity user = userService.getAllUsers().get(0);
+            User user = userService.getAllUsers().get(0);
 
             if (!testName.equals(user.getName())
                     || !testLastName.equals(user.getLastName())
@@ -74,7 +73,7 @@ public class UserServiceTest {
             userService.dropUsersTable();
             userService.createUsersTable();
             userService.saveUser(testName, testLastName, testAge);
-            List<UserEntity> userList = userService.getAllUsers();
+            List<User> userList = userService.getAllUsers();
 
             if (userList.size() != 1) {
                 Assert.fail("Проверьте корректность работы метода сохранения пользователя/удаления или создания таблицы");
