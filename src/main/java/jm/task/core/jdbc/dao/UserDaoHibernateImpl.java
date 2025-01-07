@@ -29,10 +29,6 @@ public class UserDaoHibernateImpl implements UserDao {
                     "  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);");
             query.executeUpdate();
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
     }
 
@@ -44,10 +40,6 @@ public class UserDaoHibernateImpl implements UserDao {
             Query query = session.createNativeQuery("DROP TABLE IF EXISTS user;");
             query.executeUpdate();
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
         }
     }
 
